@@ -1,0 +1,102 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 15px 30px;
+    color: white;
+}
+
+/* 메뉴 리스트 (데스크탑) */
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+/* 체크박스 숨기기 */
+.menu-btn {
+    display: none;
+}
+
+/* 햄버거 아이콘 (데스크탑에서는 숨김) */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+/* 반응형 스타일 (768px 이하) */
+@media screen and (max-width: 769px) {
+    /* 메뉴 기본 상태: 숨김 및 세로 배치 */
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* 네비바 높이에 맞춰 조절 */
+        left: 0;
+        background-color: #444;
+        text-align: center;
+    }
+
+    /* 햄버거 아이콘 보이기 */
+    .menu-icon {
+        display: block;
+        padding: 10px;
+    }
+
+    /* 햄버거 선 그리기 (CSS로 막대 3개 표현) */
+    .navicon {
+        background: white;
+        display: block;
+        height: 2px;
+        width: 25px;
+        position: relative;
+    }
+    .navicon::before, .navicon::after {
+        background: white;
+        content: '';
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+    }
+    .navicon::before { top: 8px; }
+    .navicon::after { top: -8px; }
+
+    /* ★ 핵심: 체크박스가 체크되면 메뉴 보이기 ★ */
+    .menu-btn:checked ~ .nav-menu {
+        display: flex;
+    }
+
+    /* (선택) 체크 시 햄버거를 X 모양으로 변경 */
+    .menu-btn:checked ~ .menu-icon .navicon {
+        background: transparent;
+    }
+    .menu-btn:checked ~ .menu-icon .navicon::before {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+    .menu-btn:checked ~ .menu-icon .navicon::after {
+        transform: rotate(45deg);
+        top: 0;
+    }
+}
