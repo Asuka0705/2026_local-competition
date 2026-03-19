@@ -17,6 +17,7 @@ body {
     gap: 20px; /* 카드 사이 간격 */
     max-width: 1200px;
     margin: 0 auto;
+    transition: all 1s;
 }
 
 /* 카드 기본 스타일 */
@@ -28,21 +29,19 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-/* 이미지 영역: 비율 유지 중요 */
+/* 이미지 영역: 고정된 비율(aspect-ratio)을 제거합니다 */
 .card-image {
     width: 100%;
-    aspect-ratio: 16 / 9; /* 이미지 비율 유지 (필요에 따라 조정 가능) */
-    overflow: hidden;
+    background-color: transparent; /* 여백용 배경색 제거 */
+    display: block; /* 정렬 방식을 기본으로 변경 */
 }
 
 .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 이미지가 잘리지 않고 영역을 채우도록 설정 */
-    display: block;
+    width: 100%;      /* 가로 폭은 카드에 맞게 꽉 채움 */
+    height: auto;     /* 높이는 이미지 원본 비율에 따라 자동 조절 (잘림 없음) */
+    display: block;   /* 이미지 하단 미세한 틈 제거 */
+    object-fit: initial; /* 자르기나 맞춤 기능 해제 */
 }
-
 /* 카드 텍스트 및 버튼 영역 */
 .card-content {
     padding: 15px;
