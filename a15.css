@@ -1,0 +1,93 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* 그리드 컨테이너 설정 */
+.container {
+    display: grid;
+    gap: 20px; /* 카드 사이 간격 */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 카드 기본 스타일 */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 이미지 영역: 비율 유지 중요 */
+.card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 이미지 비율 유지 (필요에 따라 조정 가능) */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 잘리지 않고 영역을 채우도록 설정 */
+    display: block;
+}
+
+/* 카드 텍스트 및 버튼 영역 */
+.card-content {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-content h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.btn-more {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-more:hover {
+    background-color: #0056b3;
+}
+
+/* --- 반응형 레이아웃 설정 --- */
+
+/* 1. 화면 폭이 1024px 이상일 때: 가로 4열 */
+@media (min-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 2. 화면 폭이 768px ~ 1023px 일 때: 가로 2열 */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 3. 화면 폭이 767px 이하일 때: 가로 1열 */
+@media (max-width: 767px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
