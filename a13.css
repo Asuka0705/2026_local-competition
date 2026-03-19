@@ -1,0 +1,117 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    background-color: #f0f2f5;
+}
+
+/* 체크박스 숨기기 */
+#modal-toggle {
+    display: none;
+}
+
+/* 1. 로그인 버튼 중앙 배치 */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-trigger {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-trigger:hover {
+    background-color: #0056b3;
+}
+
+/* 2. 모달 배경 (오버레이) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* 기본 상태: 숨김 */
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+/* 3. 모달 박스 */
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    width: 380px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    /* 살짝 위에서 나타나는 효과 */
+    transform: translateY(-30px);
+    transition: 0.3s ease;
+}
+
+/* 4. 텍스트 및 버튼 스타일 */
+.modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.modal-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.btn-group {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.continue-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.close-label {
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 5. 핵심: 체크박스가 체크되면 모달 보이기 */
+#modal-toggle:checked ~ .modal-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+#modal-toggle:checked ~ .modal-overlay .modal-content {
+    transform: translateY(0);
+}
