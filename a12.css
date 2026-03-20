@@ -1,0 +1,58 @@
+/* 배경 및 중앙 정렬 */
+body {
+    background-color: #252F39;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* 컨테이너 */
+.loader-container {
+    position: relative;
+    width: 80px; 
+    height: 80px;
+}
+
+/* 공통 점 스타일 */
+.dot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* 속도를 요청하신 2.2초로 수정 */
+    animation: move-final 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* 색상 및 시작 위치 지연 설정 */
+/* 2.2s를 4등분한 0.55s씩 차이를 두어 완벽한 정사각형 대형을 유지합니다 */
+.d1 { background-color: #FFD1DC; top: 0; left: 0; }
+.d2 { background-color: #C3E0E5; top: 0; left: 60px; animation-delay: -0.55s; }
+.d3 { background-color: #E6DAF7; top: 60px; left: 60px; animation-delay: -1.1s; }
+.d4 { background-color: #FFDAB9; top: 60px; left: 0; animation-delay: -1.65s; }
+
+/* 2.2초 주기의 무한 회전 키프레임 */
+@keyframes move-final {
+    /* 각 모서리에서 약 10%의 시간 동안 머무르며 정지 효과를 줌 */
+    0%, 10% {
+        top: 0;
+        left: 0;
+    }
+    25%, 35% {
+        top: 0;
+        left: 60px;
+    }
+    50%, 60% {
+        top: 60px;
+        left: 60px;
+    }
+    75%, 85% {
+        top: 60px;
+        left: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+    }
+}
