@@ -1,19 +1,14 @@
-/* 기본 레이아웃 */
-.wrapper {
+.wrap {
   display: flex;
   gap: 40px;
   padding: 100px;
 }
-
-.tooltip-container {
-  position: relative; /* 툴팁 배치의 기준점 */
+.container {
+  position: relative;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  outline: none;
 }
-
-/* 툴팁 공통 스타일 */
 .tooltip {
   position: absolute;
   background-color: #333;
@@ -21,39 +16,25 @@
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 12px;
-  font-weight: normal;
   white-space: nowrap;
-  z-index: 9999; /* 다른 요소보다 위에 표시 */
-  
-  /* 기본 상태: 숨김 */
-  opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease;
 }
-
-/* 호버 및 포커스 시 노출 */
-.tooltip-container:hover .tooltip,
-.tooltip-container:focus .tooltip {
+.container:hover .tooltip,
+.container:focus .tooltip {
   opacity: 1;
   visibility: visible;
 }
-
-/* 위치: 상단 (설정) */
 .tooltip.top {
-  bottom: 120%; /* 텍스트 위로 배치 */
+  bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
 }
-
-/* 위치: 오른쪽 (로그아웃) */
 .tooltip.right {
   top: 50%;
-  left: 110%; /* 텍스트 오른쪽에 배치 */
+  left: 110%;
   transform: translateY(-50%);
 }
-
-/* (선택) 포커스 시 텍스트 강조 */
-.tooltip-container:focus .text {
+.container:focus .text {
   text-decoration: underline;
   color: #007bff;
 }
